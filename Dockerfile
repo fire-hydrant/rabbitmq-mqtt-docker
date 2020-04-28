@@ -1,10 +1,11 @@
-FROM rabbitmq:3.6
+FROM rabbitmq:3.8.3-alpine
 
 ENV RABBITMQ_DEFAULT_USER admin
 ENV RABBITMQ_DEFAULT_PASS admin
 
 RUN rabbitmq-plugins enable --offline rabbitmq_management
 RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
+RUN rabbitmq-plugins enable --offline rabbitmq_web_mqtt
 
 COPY rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
 COPY rabbitmq.config /etc/rabbitmq/rabbitmq.config
